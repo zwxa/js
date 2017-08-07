@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+.outer{
+	width: 122px;
+	height: 80px;
+	overflow: hidden;
+}
+.outer ul{
+        display:inline-block;
+        height: 80px;
+        -webkit-transform: translate3d(0, 0, 0); /* 3d渲染，开启硬件加速 */
+        transform: translate3d(0, 0, 0);
+        font-size: 0;   /* 使inline-block无默认间距 */
+        white-space: nowrap;  /* 超出不折行 */
+    }
+.outer ul li{
+        display: inline-block;
+        padding-right: 50px;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        font-size: 24px;
+    }
+.theanimation{
+        animation:theanimation 20s infinite linear;
+        -webkit-animation:theanimation 20s infinite linear;
+    }
+    @keyframes theanimation{
+      from {
+        transform:translateX(0%);
+      } 
+      to {
+        transform:translateX(-100%);
+      } 
+    }
+    @-webkit-keyframes theanimation{ 
+      from {
+        -webkit-transform:translateX(0%);
+      } 
+      to {
+        -webkit-transform:translateX(-100%);
+      }
+    } 
+</style>
+<body>
+	<div class="outer">
+		<ul id="w_scroll"> 
+			<li>这是第一条数据！</li>
+			<li>这是第二条数据！</li>
+			<li>这是第三条数据！</li>
+			<li>这是第四条数据！</li>
+			<li>这是第一条数据！</li>
+		</ul>
+	</div>
+	<code>
+		
+	</code>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	$('#w_scroll').width($('#w_scroll').width() - $('#w_scroll li:first-child').innerWidth());
+    $('#w_scroll').addClass('theanimation');
+</script>
+</html>
